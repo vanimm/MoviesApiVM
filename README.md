@@ -12,7 +12,6 @@ Se obtiene la lista de películas y se almacena en la base de datos, para luego 
 ### Configuración del Entorno Local
 
 1. Clonar el repositorio:
-   -    ```bash
    -    git clone https://github.com/vanimm/MoviesApiVM.git
 2.  Acceder al directorio del proyecto 
     -   cd proyecto
