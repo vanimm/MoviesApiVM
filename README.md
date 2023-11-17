@@ -31,10 +31,10 @@ Se obtiene la lista de películas y se almacena en la base de datos, para luego 
 La BD está en MySQL, Creamos la BD y luego configuramos el archivo .env para conectar y poder hacer las migraciones. 
  
 ### API y Rutas
-- En el archivo de entorno ".env", existen dos variables donde vamos a configurar para acceder a la API de movies y vamos a colocar nuestro token que nos proporciona la web
+- En el archivo de entorno ".env", existen dos variables donde vamos a configurar para acceder a la API de movies y vamos a colocar nuestro token que nos proporciona la web, una vez que nos logueamos. 
 
     - API_ENDPOINT=https://api.themoviedb.org/3/
-    - API_KEY = 
+    - API_KEY = 'Bearer TOKEN'
 
 - Para conectar con la API utilice Guzzlehttp
     -   previamente lo instalé el paquete de Guzzle, Laravel ya lo incluye automaticamente, sin embargo para asegurarse lo instalé.
@@ -47,3 +47,12 @@ La BD está en MySQL, Creamos la BD y luego configuramos el archivo .env para co
     *   DELETE /movies/{id} - Elimina un registro de la BD. 
     *   PUT /movies/{id} - Actualiza los datos de la movie seleccionada y redirecciona a la página principal
     *   GET /api - Hace una petición a la API y carga las movies nuevas en la BD
+
+### Errores Comunes y Soluciones
+-  Cuando hacemos la petición a la API nos puede mostrar el siguiente error:
+     "cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
+
+        *   Podemos solucionar este error seguimos los siguientes pasos:
+            
+            1 - Ir a la archivio "vendor\guzzlehttp\guzzle\src\Client.php"
+            2 - En el método "configureDefaults", cambiamos el valor de "verify" a false
